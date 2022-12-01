@@ -1,0 +1,372 @@
+* {
+    background: black;
+    color: whitesmoke;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0.3rem 0;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+body {
+    width: 100%;
+}
+
+.link h3,
+button,
+main a {
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 1.17rem;
+    font-weight: bold;
+}
+
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    list-style: none;
+}
+
+nav li {
+    padding-right: 1rem;
+}
+
+nav a {
+    text-decoration: none;
+    font-size: 1.17rem;
+}
+
+header {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content:space-around;
+    position: sticky;
+    top: 0px;
+}
+
+header p,
+header nav {
+    width: 35%;
+}
+
+header h1 {
+    width: 30%;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+label {
+    display: block;
+}
+
+#id_image label,
+button,
+main a {
+    color: white;
+    text-decoration: none;
+    background-color: black;
+    border: 2px solid gray;
+    border-style: outset;
+    padding: 2px 4px;
+}
+
+h2 {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.flux {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.review,
+.ticket{
+    width: 100%;
+}
+
+.ticket .body h3 + p,
+.review .body + p {
+    width: 85%;
+    padding-left: 1rem;
+}
+
+.follower h2,
+.follow form {
+    text-align: center;
+}
+
+.follower {
+    align-items: center;
+    width: 70%;
+}
+
+.follow {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid grey;
+    flex-wrap: nowrap;
+}
+
+.follow label {
+    display: none;
+}
+
+.follow input {
+    margin: 0 5px;
+    flex-grow: 1;
+}
+
+.follow button {
+    font-size: 1rem;
+}
+
+.follow p {
+    font-size: 1.17rem;
+}
+
+#follow {
+    flex-grow: 0;
+    margin-right: 5px;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.container .post {
+    max-width: 40%;
+}
+
+.create .link,
+.create .container button {
+    padding: 2px 4px;
+    margin-top: 10px;
+}
+
+.create button {
+    padding: 3px 10px;
+    margin-top: 10px;
+}
+
+.create,
+.create form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.helptext {
+    display: none;
+}
+
+.container .post p {
+    width: 90%;
+}
+
+.post form {
+    flex-grow: 1;
+    width: 80%;
+}
+
+.post label,
+.post textarea,
+.post input {
+    flex-grow: 1;
+    width: 100%;
+    padding: 10px 5px;
+}
+
+.container .post textarea,
+.container .post input {
+    min-width: 90%;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    min-width: 80%;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.footer {
+    display: flex;
+    justify-content: right;
+    min-width: 80%;
+}
+
+.footer p {
+    padding-right: 2rem;
+}
+
+.review .body {
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.ticket .body {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.review-separator {
+    padding: 0 1rem;
+}
+
+.post,
+.review-ticket {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid white;
+    align-items: center;
+    justify-content: center;
+}
+
+.post {
+    width: 80%;
+}
+
+.review-ticket {
+    width: 95%;
+}
+
+.review .ticket .post {
+    margin-left: 10%;
+}
+
+div {
+    padding-left: 1rem;
+    padding-right: 0.3rem;
+}
+
+img {
+    padding: 0;
+}
+
+#signup {
+    width: 40%;
+}
+
+#signup ul {
+    display: none;
+}
+
+#signup .errorlist {
+    display: unset;
+}
+
+/* star rating css*/
+
+.post .rating input {
+    opacity: 0;
+    width: fit-content;
+    min-width: fit-content;
+}
+
+.rating {
+    width: 60%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+}
+
+.rating input + label:before {
+    content:"\2605";
+    font-size:2em;
+    line-height:0.9em;
+    vertical-align:top;
+}
+
+#id_rating_0 + label:before {
+    content:"☆";
+    color: grey;
+}
+
+#id_rating_0:checked + label:before {
+    color: darkred;
+}
+
+#id_rating_0:hover + label:before {
+    color: red;
+}
+
+.rating input:checked ~ label:before {
+    color:#F80;
+}
+
+.rating input:hover ~ label:before {
+    color:rgb(245, 231, 35);
+}
+
+.star {
+    color:#F80;
+}
+
+/* file input css*/
+.image {
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    padding: 0;
+}
+
+.image div {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.image label{
+    z-index: 2;
+    position: relative;
+    width: fit-content;
+    margin: 4px 0;
+}
+
+.image input[type="file"] {
+    position: relative;
+    left: 0;
+    top: -2rem;
+    background-color: black;
+    color: wheat;
+    z-index: 1;
+    opacity: 0;
+    padding: 0;
+    width: 10px;
+}
+
+.image-bck-img {
+    height: 149px;
+    width: 105px;
+    padding: 0;
+    margin-left: 8px;
+    background-size: 105px 149px;
+}
+
+/* last touch styling*/
+.review-ticket,
+.post {
+    border: solid darkslategrey 2px;
+    border-radius: 2%;
+    box-shadow: 2px 2px 4px gray;
+    padding: 0 20px 10px 8px;
+    margin: 10px 10px;
+}
