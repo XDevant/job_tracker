@@ -25,6 +25,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path('jobs/', table_views.jobs, name='jobs'),
     path('jobs/prospects/add/', table_views.create_prospect, name='create-prospect'),
+    path('jobs/prospects/', table_views.create_prospect, name='list-prospects'),
     path('signup/', auth_views.signup_page, name='signup'),
     path('', auth_views.login_page, name='login'),
     path('logout/', auth_views.logout_user, name='logout'),
