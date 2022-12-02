@@ -7,10 +7,11 @@ class ProspectForm(forms.ModelForm):
     """Model form, title translation and custom imagefield widget"""
     class Meta:
         model = models.Prospect
-        fields = ('job', 'company', 'post', 'website', 'email')
+        fields = ('job', 'company', 'source', 'post_url', 'website', 'email')
         labels = {'job': 'Poste',
                   'company': 'Entreprise',
-                  'post': 'Annonce',
+                  'source': 'Source',
+                  'post_url': 'Annonce',
                   'website': 'Site Web',
                   'email': 'Couriel',
                   }

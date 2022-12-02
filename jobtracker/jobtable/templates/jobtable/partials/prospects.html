@@ -1,0 +1,27 @@
+
+
+    <table id="basics">
+        <thead>
+            <tr>
+                <th><h3>Poste</h3></th>
+                <th><h3>Entreprise</h3></th>
+                <th><h3>Annonce</h3></th>
+                <th><h3>Site Web</h3></th>
+                 <th><h3>Couriel</h3></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for prospect in prospects %}
+            <tr>
+                <td>{{ prospect.job }}</td>
+                <td>{{ prospect.company }}</td>
+                <td><a href="{{ prospect.post_url }}">{{ prospect.source }}</a></td>
+                <td>{{ prospect.website }}</td>
+                <td>{{ prospect.email }}</td>
+                {% if prospect.answered is False %}
+                <td><a href="{% url 'candidature' prospect.id %}">Préparer candidature</a></td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>

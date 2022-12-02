@@ -1,9 +1,13 @@
 from django.shortcuts import render, redirect
 from . import forms
+from .models import Prospect
 
 
 def jobs(request):
-    context = {}
+    prospects = sorted(Prospect.objects.all(),
+                       key=lambda prospect: prospect.date_created,
+                       reverse=True)
+    context = {'prospects': prospects}
     return render(request, 'jobtable/home.html', context=context)
 
 
@@ -12,7 +16,6 @@ def create_prospect(request):
         prospect_form = forms.ProspectForm(request.POST)
         if prospect_form.is_valid():
             prospect = prospect_form.save(commit=False)
-            prospect.user = request.user
             prospect.save()
             return redirect('jobs')
     context = {'form': forms.ProspectForm}

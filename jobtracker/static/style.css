@@ -88,6 +88,11 @@ h2 {
     align-items: center;
 }
 
+td,
+th {
+    padding-right: 1em;
+}
+
 .review,
 .ticket{
     width: 100%;
