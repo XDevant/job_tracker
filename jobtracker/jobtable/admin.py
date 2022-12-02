@@ -3,7 +3,7 @@ from .models import Prospect, Candidature, Contact, Letter
 
 
 class ProspectAdmin(admin.ModelAdmin):
-    list_display = ('job', 'company', 'source', 'post_url', 'website', 'email')
+    list_display = ('company', 'activity', 'size', 'website', 'email', 'comments')
     ordering = ('date_created', )
 
 
