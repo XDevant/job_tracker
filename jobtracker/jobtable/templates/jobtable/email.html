@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="create">
+    <h2>Envoyer depuis : {{ exchange.mail.user.email }}</h2>
+    <p>Destinataire: {{ exchange.mail.contact.email }}</p>
+    <p>
+        Objet : {{ exchange.application.job }}
+    </p>
+    <p>
+        {{ exchange.mail.greet }}</br>{{ exchange.mail.you }}</br>{{ exchange.mail.me }}</br>{{ exchange.mail.us }}</br>
+        {{ exchange.mail.salute }}</br>{{ exchange.mail.user.first_name }} {{ exchange.mail.user.last_name }}
+    </p>
+    <div class="post">
+        <form method="post" enctype="multipart/form-data">
+            {{ form }}
+            {% csrf_token %}
+            <button type="submit" >Envoyer</button>
+        </form>
+    </div>
+    <script src="{% static 'script.js' %}"></script>
+</div>
+{% endblock content %}

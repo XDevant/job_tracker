@@ -1,6 +1,6 @@
 
 
-    <table id="basics">
+    <table>
         <thead>
             <tr>
                 <th><h3>Entreprise</h3></th>
@@ -8,18 +8,22 @@
                 <th><h3>Taille</h3></th>
                 <th><h3>Site Web</h3></th>
                 <th><h3>Couriel</h3></th>
+                {% if actions %}
+                <th><h3>Actions</h3></th>
+                {% endif %}
             </tr>
         </thead>
         <tbody>
         {% for prospect in prospects %}
             <tr>
-                <td>{{ prospect.company }}</td>
+                <td><a href="{% url 'prospect-detail' prospect.id %}">{{ prospect.company }}</a></td>
                 <td>{{ prospect.activity }}</td>
                 <td>{{ prospect.size }}</td>
                 <td><a href="{{ prospect.website }}">{{ prospect.site_name }}</a></td>
                 <td>{{ prospect.email }}</td>
-                {% if prospect.answered is False %}
-                <td><a href="{% url 'candidature' prospect.id %}">Préparer candidature</a></td>
+                {% if actions %}
+                <td><a href="{% url 'edit-prospect' prospect.id %}">Modifier</a></td>
+                <td><a href="{% url 'delete-prospect' prospect.id %}">Archiver</a></td>
                 {% endif %}
             </tr>
         {% endfor %}

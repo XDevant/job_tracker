@@ -102,6 +102,13 @@ td a {
     color: lightblue;
 }
 
+.detail {
+    width: 100%;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-around;
+}
+
 .review,
 .ticket{
     width: 100%;

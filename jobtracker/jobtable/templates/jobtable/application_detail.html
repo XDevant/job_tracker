@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<article class="flux">
+    <h2>Candidature en cours:</h2>
+    <div class="header">
+        <p><a href="{% url 'application-update' application.id %}">Editer candidature</a></p>
+    </div>
+    <div class="detail">
+        {% include 'jobtable/partials/prospect.html' with prospect=application.prospect %}
+        {% include 'jobtable/partials/application.html' with application=application %}
+        {% include 'jobtable/partials/contact_list.html' with object_list=contact_list %}
+    </div>
+    <div class="detail">
+        {% include 'jobtable/partials/mail_list.html' with object_list=mail_list %}
+        <p><a href="{% url 'mail-create' application.id %}">Contacter</a></p>
+    </div>
+</article>
+{% endblock content %}

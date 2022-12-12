@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<article class="flux">
+    <h2>Prospect:</h2>
+    <div class="header">
+        <p><a href="{% url 'edit-prospect' prospect.id %}">Editer prospect</a></p>
+    </div>
+    <div class="detail">
+        {% include 'jobtable/partials/prospect.html' with prospect=prospect %}
+        {% include 'jobtable/partials/contact_list.html' with object_list=contact_list %}
+    </div>
+    <p><a href="{% url 'contact-create' prospect.id %}">Ajouter contact</a></p>
+</article>
+{% endblock content %}

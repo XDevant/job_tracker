@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<article>
+    <h2>Candidature en cours:</h2>
+    <div class="header">
+        <p><a href="{% url 'application-create' %}">Nouvelle candidature</a></p>
+    </div>
+    <div class="flux">
+        {% if object_list %}
+        {% include 'jobtable/partials/applications.html' with object_list=object_list %}
+        {% else %}
+            <p>Contient la liste des candidatures</p>
+        {% endif %}
+    </div>
+</article>
+{% endblock content %}

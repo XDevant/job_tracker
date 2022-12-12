@@ -1,0 +1,26 @@
+
+
+    <table>
+        <thead>
+            <tr>
+                <th><h3>Poste</h3></th>
+                <th><h3>Entreprise</h3></th>
+                <th><h3>Source</h3></th>
+                {% if actions %}
+                <th><h3>Actions</h3></th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+        {% for application in object_list %}
+            <tr>
+                <td><a href="{% url 'application-detail' application.id %}">{{ application.job }}</a></td>
+                <td>{{ application.prospect }}</td>
+                <td><a href="{{ application.source_url }}">{{ application.source }}</a></td>
+                {% if actions %}
+                <td><a href="{% url 'application-update' application.id %}">Modifier</a></td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>

@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <title>Lettre de Motivation</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5.0, minimum-scale=1">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,700' rel='stylesheet' type='text/css'>
+    <link href="{% static 'stylelm.css' %}" type="text/css" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+        <div>
+            <h1 >{{ exchange.application.job }}</h1>
+            <div>
+                <p>{{ exchange.application.prospect.company }}</p>
+                <p>{{ exchange.application.prospect.localisation }}</p>
+                <p>{{ exchange.application.type }}</p>
+            </div>
+        </div>
+    </header>
+    <main>
+        <p>{{ exchange.mail.greet }}</p>
+        <p>{{ exchange.mail.you }}</p>
+        <p>{{ exchange.mail.me }}</p>
+        <p>{{ exchange.mail.us }}</p>
+        <p>{{ exchange.mail.salute }}</p>
+    </main>
+    <footer>
+        <p>A Paris, le 12 décembre 2022</p>
+        <p>Xavier Devant</p>
+    </footer>
+  </body>
+
+
+

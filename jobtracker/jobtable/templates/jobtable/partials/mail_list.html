@@ -1,0 +1,28 @@
+<div class="contacts">
+    <h3>Echanges</h3>
+    {% if object_list %}
+    <ul>
+        {% for exchange in object_list %}
+        <li>
+            <P>
+                {% if exchange.mail.sent %} A : {% else %} De : {% endif %}{{ exchange.mail.contact.email }} le {{ exchange.mail.date_sent }}
+            </p>
+            <p>{{ exchange.mail.greet }}</p>
+            <p>{{ exchange.mail.you }}</p>
+            <p>{{ exchange.mail.me }}</p>
+            <p>{{ exchange.mail.us }}</p>
+            <p>{{ exchange.mail.salute }}</p>
+            <p>
+                {% if exchange.mail.is_mail %}
+                <a href="{% url 'mailbox' exchange.id %}">Envoyer Mail</a>
+                {% else %}
+                <a href="{% url 'letter' exchange.id %}">Vue pour impression </a>
+                {% endif %}
+            </p>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>Contient la liste des mails échangés</p>
+    {% endif %}
+</div>

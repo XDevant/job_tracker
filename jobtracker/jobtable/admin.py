@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Prospect, Candidature, Contact, Letter
+from .models import Prospect, Application, Contact, Mail, Insider, Exchange
 
 
 class ProspectAdmin(admin.ModelAdmin):
@@ -8,6 +8,8 @@ class ProspectAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Prospect, ProspectAdmin)
-admin.site.register(Candidature)
+admin.site.register(Application)
 admin.site.register(Contact)
-admin.site.register(Letter)
+admin.site.register(Insider)
+admin.site.register(Mail)
+admin.site.register(Exchange)
