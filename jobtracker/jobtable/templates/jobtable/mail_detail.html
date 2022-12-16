@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<article class="flux">
+    <h2>Message:</h2>
+    <div class="header">
+        <p><a href="{% url 'mail-update' mail.id %}">Editer</a></p>
+    </div>
+    <div class="detail">
+        {% include 'jobtable/partials/mail.html' with mail=mail %}
+    </div>
+    <div class="links">
+        {% if exchange_list %}
+        <h3>Echanges:</h3>
+        {% for exchange in exchange_list %}
+        {% include 'jobtable/partials/mail.html' with mail=exchange.mail %}
+        {% endfor %}
+        {% endif %}
+        {% if application_list %}
+        <h3>Candidatures:</h3>
+        {% for application in application_list %}
+        <p><a href="{% url 'application-detail' application.id %}">{{ application }}</a></p>
+        {% endfor %}
+        {% endif %}
+    </div>
+</article>
+{% endblock content %}

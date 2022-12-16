@@ -1,0 +1,15 @@
+<div class="mail">
+    <a href="{% url 'mail-detail' mail.id %}">
+        <p>{{ mail.id }}</p>
+        <h3>
+        {% if mail.sent %} A : {% else %} De : {% endif %}{{ mail.contact.email }} le {{ mail.date_sent }}
+        </h3>
+    </a>
+    <a href="{% url 'mail-update' mail.id %}">
+        <p>{{ mail.greet }}</p>
+        <p>{{ mail.you }}</p>
+        <p>{{ mail.me }}</p>
+        <p>{{ mail.us }}</p>
+        <p>{{ mail.salute }}</p>
+    </a>
+</div>

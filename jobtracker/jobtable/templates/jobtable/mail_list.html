@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<article>
+    <h2>Mails:</h2>
+    <div class="header">
+        <p><a href="{% url 'contact-list' %}">Nouveau mail</a></p>
+    </div>
+    <div class="flux">
+        {% if object_list %}
+            {% for mail in object_list %}
+            {% include 'jobtable/partials/mail.html' with mail=mail %}
+            {% endfor %}
+        {% else %}
+            <p>Contient la liste des mails</p>
+        {% endif %}
+    </div>
+</article>
+{% endblock content %}

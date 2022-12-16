@@ -1,13 +1,19 @@
 <nav>
     <ul>
         <li>
+            <a href="{% url 'jobs' %}">Jobs</a>
+        </li>
+        <li>
             <a href="{% url 'list-prospects' %}">Prospects</a>
         </li>
         <li>
             <a href="{% url 'application-list' %}">Candidatures</a>
         </li>
         <li>
-            <a href="{% url 'jobs' %}">Jobs</a>
+            <a href="{% url 'contact-list' %}">Contacts</a>
+        </li>
+        <li>
+            <a href="{% url 'mail-list' %}">Mails</a>
         </li>
         <li>
             <a href="{% url 'logout' %}">Se Déconnecter</a>

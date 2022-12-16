@@ -101,7 +101,7 @@ class Application(models.Model):
         Pole_Emploi = 'Pôle emploi'
         Apec = 'Apec'
         Other = 'Autre'
-        Unknown = 'Inconnue'
+        Unknown = 'Spontanée'
 
     user = models.ForeignKey(
                              to=settings.AUTH_USER_MODEL,
@@ -117,11 +117,9 @@ class Application(models.Model):
     type = models.CharField(max_length=18, default=Type.FULL_CDI, choices=Type.choices)
     source = models.CharField(max_length=16, choices=Source.choices, default=Source.Unknown)
     source_url = models.URLField(max_length=128, null=True)
-    date_first_sent = models.DateField(default=None, null=True)
-    number_sent = models.IntegerField(default=0)
-    date_last_sent = models.DateField(default=None, null=True)
     date_interview = models.DateField(default=None, null=True)
-    comments = models.TextField(max_length=300, null=True)
+    comments = models.TextField(max_length=500, default=None, null=True)
+    notes = models.TextField(max_length=500, default=None, null=True)
     result = models.CharField(choices=Result.choices, max_length=16)
     date_created = models.DateField(auto_now_add=True)
     date_updated = models.DateField(default=None, null=True)

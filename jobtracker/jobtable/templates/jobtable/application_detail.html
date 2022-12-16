@@ -12,7 +12,7 @@
     </div>
     <div class="detail">
         {% include 'jobtable/partials/mail_list.html' with object_list=mail_list %}
-        <p><a href="{% url 'mail-create' application.id %}">Contacter</a></p>
+        <p><a href="{% url 'exchange-create' application.id %}">Contacter</a></p>
     </div>
 </article>
 {% endblock content %}

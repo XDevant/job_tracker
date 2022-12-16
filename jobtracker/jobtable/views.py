@@ -137,19 +137,18 @@ class ApplicationCreateView(CreateView):
 
 class ApplicationUpdateView(UpdateView):
     model = Application
-    fields = ['name']
+    fields = ['job', 'source', 'source_url', 'type', 'comments', 'notes', 'result']
     template_name_suffix = '_update_form'
+
+    def get_success_url(self):
+        return reverse('application-detail', kwargs={'pk': self.kwargs["pk"]})
 
 
 class ApplicationDeleteView(UpdateView):
     model = Application
 
 
-class ContactListView(ListView):
-    model = Contact
-
-
-class ContactCreateView(CreateView):
+class InsiderCreateView(CreateView):
     model = Contact
     fields = ['email', 'name', 'tel', 'linkedin', 'comments']
 
@@ -168,11 +167,35 @@ class ContactCreateView(CreateView):
         return super().form_valid(form)
 
 
-class MailListView(ListView):
-    model = Mail
+class ContactListView(ListView):
+    model = Contact
 
 
-class MailCreateView(CreateView):
+class ContactCreateView(CreateView):
+    model = Contact
+
+
+class ContactDetailView(DetailView):
+    model = Contact
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        prospect_list = Insider.objects.filter(contact_id=self.kwargs['pk'])
+        context['prospect_list'] = [insider.prospect for insider in prospect_list]
+        context['application_list'] = Application.objects.filter(prospect__in=context['prospect_list'])
+        return context
+
+
+class ContactUpdateView(UpdateView):
+    model = Contact
+    fields = ['email', 'name', 'tel', 'linkedin', 'comments']
+    template_name_suffix = '_update_form'
+
+    def get_success_url(self, *args, **kwargs):
+        return reverse('contact-detail', kwargs={'pk': self.kwargs["pk"]})
+
+
+class ExchangeCreateView(CreateView):
     model = Mail
     fields = ['contact', 'greet', 'you', 'me', 'us', 'salute', 'is_mail', 'sent']
 
@@ -189,6 +212,35 @@ class MailCreateView(CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
+
+
+class MailListView(ListView):
+    model = Mail
+
+
+class MailCreateView(CreateView):
+    model = Mail
+
+
+class MailDetailView(DetailView):
+    model = Mail
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        application_list = Exchange.objects.filter(mail_id=self.kwargs['pk'])
+        print(application_list)
+        context['application_list'] = [exchange.application for exchange in application_list]
+        context['exchange_list'] = Exchange.objects.filter(application__in=context['application_list'])
+        return context
+
+
+class MailUpdateView(UpdateView):
+    model = Mail
+    fields = ['contact', 'greet', 'you', 'me', 'us', 'salute', 'is_mail', 'sent']
+    template_name_suffix = '_update_form'
+
+    def get_success_url(self, *args, **kwargs):
+        return reverse('mail-detail', kwargs={'pk': self.kwargs["pk"]})
 
 
 class LetterDetailView(DetailView):

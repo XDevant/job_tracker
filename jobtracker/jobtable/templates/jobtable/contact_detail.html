@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<article class="flux">
+    <h2>Contact:</h2>
+    <div class="header">
+        <p><a href="{% url 'contact-update' contact.id %}">Editer contact</a></p>
+    </div>
+    <div class="detail">
+        {% include 'jobtable/partials/contact.html' with contact=contact %}
+    </div>
+    <div class="links">
+        {% if prospect_list %}
+        <h3>Prospects:</h3>
+        {% for prospect in prospect_list %}
+        <p><a href="{% url 'prospect-detail' prospect.id %}">{{ prospect }}</a></p>
+        {% endfor %}
+        {% endif %}
+        {% if application_list %}
+        <h3>Candidatures:</h3>
+        {% for application in application_list %}
+        <p><a href="{% url 'application-detail' application.id %}">{{ application }}</a></p>
+        {% endfor %}
+        {% endif %}
+    </div>
+</article>
+{% endblock content %}

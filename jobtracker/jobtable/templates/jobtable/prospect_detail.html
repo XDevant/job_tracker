@@ -9,6 +9,6 @@
         {% include 'jobtable/partials/prospect.html' with prospect=prospect %}
         {% include 'jobtable/partials/contact_list.html' with object_list=contact_list %}
     </div>
-    <p><a href="{% url 'contact-create' prospect.id %}">Ajouter contact</a></p>
+    <p><a href="{% url 'insider-create' prospect.id %}">Ajouter contact</a></p>
 </article>
 {% endblock content %}

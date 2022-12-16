@@ -1,10 +1,9 @@
 <div class="contacts">
-    <h3>Contacts</h3>
+    <h3><a href="{% url 'contact-detail' contact.id %}">{{ contact.name }}</a></h3>
     <ul>
-        <li>{{ contact.name }}</li>
         <li>{{ contact.tel }}</li>
         <li>{{ contact.email }}</li>
-        <li>{{ contact.linkedin }}</li>
-        <li>{{ contact.name }}</li>
+        <li><a href="{{ contact.linkedin }}">LinkedIn</a></li>
+        <li>{{ contact.comments }}</li>
     </ul>
 </div>
