@@ -1,0 +1,7 @@
+<div class="appointment">
+    <p>{{ appointment.type }}</p>
+    <p>{{ appointment.date }}</p>
+    <p>{{ appointment.place }}</p>
+    <p><a href="{% url 'contact-detail' appointment.contact.id %}">{{ appointment.contact }}</a></p>
+    <p>{{ appointment.notes }}</p>
+</div>

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Prospect, Application, Contact, Mail, Insider, Exchange
+from .models import Prospect, Application, Contact, Mail, Insider, Exchange, Appointment, Meeting
 
 
 class ProspectAdmin(admin.ModelAdmin):
@@ -32,9 +32,21 @@ class ExchangeAdmin(admin.ModelAdmin):
     ordering = ('application',)
 
 
+class AppointmentAdmin(admin.ModelAdmin):
+    list_display = ('date', 'type', 'place', 'contact', 'notes')
+    ordering = ('date', 'contact')
+
+
+class MeetingAdmin(admin.ModelAdmin):
+    list_display = ('appointment', 'application')
+    ordering = ('application',)
+
+
 admin.site.register(Prospect, ProspectAdmin)
 admin.site.register(Application, ApplicationAdmin)
 admin.site.register(Contact, ContactAdmin)
 admin.site.register(Insider, InsiderAdmin)
 admin.site.register(Mail, MailAdmin)
 admin.site.register(Exchange, ExchangeAdmin)
+admin.site.register(Appointment, AppointmentAdmin)
+admin.site.register(Meeting, MeetingAdmin)

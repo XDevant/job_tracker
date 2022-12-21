@@ -1,0 +1,14 @@
+<div class="contacts">
+    <h3>Rendez-vous</h3>
+    {% if object_list %}
+    <ul>
+        {% for meeting in object_list %}
+        <li>
+            {% include 'jobtable/partials/appointment.html' with appointment=meeting.appointment %}
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>Contient la liste des rendez-vous</p>
+    {% endif %}
+</div>

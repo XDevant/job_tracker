@@ -15,6 +15,7 @@ urlpatterns = [
     path('applications/<int:pk>/', views.ApplicationDetailView.as_view(), name='application-detail'),
     path('applications/<int:pk>/change/', views.ApplicationUpdateView.as_view(), name='application-update'),
     path('applications/<int:pk>/mails/add/', views.ExchangeCreateView.as_view(), name='exchange-create'),
+    path('applications/<int:pk>/appointment/add/', views.MeetingCreateView.as_view(), name='meeting-create'),
     path('letters/<int:pk>/', views.LetterDetailView.as_view(), name='letter'),
     path('mailbox/<int:pk>/', views.MailboxView.as_view(), name='mailbox'),
     path('contacts/', views.ContactListView.as_view(), name='contact-list'),
@@ -23,4 +24,6 @@ urlpatterns = [
     path('mails/', views.MailListView.as_view(), name='mail-list'),
     path('mails/<int:pk>/', views.MailDetailView.as_view(), name='mail-detail'),
     path('mails/<int:pk>/change/', views.MailUpdateView.as_view(), name='mail-update'),
+    path('appointments/<int:pk>/', views.AppointmentDetailView.as_view(), name='appointment-detail'),
+    path('appointments/<int:pk>/change/', views.AppointmentUpdateView.as_view(), name='appointment-update'),
 ]

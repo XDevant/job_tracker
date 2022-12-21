@@ -4,6 +4,12 @@
     <h2>Candidature en cours:</h2>
     <div class="header">
         <p><a href="{% url 'application-update' application.id %}">Editer candidature</a></p>
+        <p><a href="{% url 'meeting-create' application.id %}">Enregistrer RdV</a></p>
+        <p><a href="{% url 'exchange-create' application.id %}">Contacter</a></p>
+        <a href="{% url 'insider-create' application.prospect.id %}">Ajouter contact</a>
+    </div>
+    <div class="detail">
+        {% include 'jobtable/partials/appointment_list.html' with object_list=appointment_list %}
     </div>
     <div class="detail">
         {% include 'jobtable/partials/prospect.html' with prospect=application.prospect %}
@@ -12,7 +18,6 @@
     </div>
     <div class="detail">
         {% include 'jobtable/partials/mail_list.html' with object_list=mail_list %}
-        <p><a href="{% url 'exchange-create' application.id %}">Contacter</a></p>
     </div>
 </article>
 {% endblock content %}

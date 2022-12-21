@@ -7,7 +7,7 @@ from django.views.generic.list import ListView
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
 from . import forms
-from .models import Prospect, Application, Mail, Contact, Insider, Exchange
+from .models import Prospect, Application, Mail, Contact, Insider, Exchange, Appointment, Meeting
 
 
 @login_required
@@ -110,6 +110,8 @@ class ApplicationDetailView(DetailView):
         context['contact_list'] = contact_list
         mail_list = Exchange.objects.filter(application=application)
         context['mail_list'] = mail_list
+        appointment_list = Meeting.objects.filter(application=application)
+        context['appointment_list'] = appointment_list
         return context
 
 
@@ -246,6 +248,44 @@ class MailUpdateView(UpdateView):
 class LetterDetailView(DetailView):
     model = Exchange
 
+
+class MeetingCreateView(CreateView):
+    model = Appointment
+    fields = ['date', 'type', 'place', 'contact', 'notes']
+
+    def post(self, request, pk):
+        form = self.get_form()
+        if form.is_valid():
+            form.instance.user = self.request.user
+            appointment = form.save()
+            application = Application.objects.get(id=pk)
+            Meeting.objects.create(appointment=appointment, application=application)
+            return redirect('appointment-detail', pk=pk)
+        return render(request, 'jobtable/appointment_form.html', {'form': form})
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+
+class AppointmentDetailView(DetailView):
+    model = Appointment
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        application_list = Meeting.objects.filter(appointment_id=self.kwargs['pk'])
+        context['application_list'] = [meeting.application for meeting in application_list]
+        context['meeting_list'] = Meeting.objects.filter(application__in=context['application_list'])
+        return context
+
+
+class AppointmentUpdateView(UpdateView):
+    model = Appointment
+    fields = ['date', 'type', 'place', 'contact', 'notes']
+    template_name_suffix = '_update_form'
+
+    def get_success_url(self, *args, **kwargs):
+        return reverse('appointment-detail', kwargs={'pk': self.kwargs["pk"]})
 
 class MailboxView(FormView):
     form_class = forms.MailboxForm

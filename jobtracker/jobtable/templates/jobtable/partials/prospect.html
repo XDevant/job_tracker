@@ -1,7 +1,8 @@
 <div class="prospect">
     <h3>Entreprise</h3>
     <ul>
-        <li>{{ prospect.company }}</li>
+        <li><a href="{% url 'prospect-detail' prospect.id %}">{{ prospect.company }}</a></li>
+        <li><a href="{{ prospect.website }}" target="_blank">Site Web</a></li>
         <li>{{ prospect.activity }}</li>
         <li>{{ prospect.size }}</li>
         <li>{{ prospect.comments }}</li>

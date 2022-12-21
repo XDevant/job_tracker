@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<article class="flux">
+    <h2>Rendez-vous:</h2>
+    <div class="header">
+        <p><a href="{% url 'appointment-update' appointment.id %}">Editer</a></p>
+    </div>
+    <div class="detail">
+        {% include 'jobtable/partials/appointment.html' with appointment=appointment %}
+    </div>
+    <div class="links">
+        {% if meeting_list %}
+        <h3>Autres rdv:</h3>
+        {% for meeting in meeting_list %}
+        {% include 'jobtable/partials/appointment.html' with appointment=meeting.appointment %}
+        {% endfor %}
+        {% endif %}
+        {% if application_list %}
+        <h3>Candidatures:</h3>
+        {% for application in application_list %}
+        <p><a href="{% url 'application-detail' application.id %}">{{ application }}</a></p>
+        {% endfor %}
+        {% endif %}
+    </div>
+</article>
+{% endblock content %}
