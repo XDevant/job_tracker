@@ -62,7 +62,7 @@ def create_prospect(request):
 def edit_prospect(request, pk):
     """
     Arg: request object
-         Int positive, id
+         Int positive, prospect id
     Return: String (HTML)
     """
     try:
@@ -286,6 +286,7 @@ class AppointmentUpdateView(UpdateView):
 
     def get_success_url(self, *args, **kwargs):
         return reverse('appointment-detail', kwargs={'pk': self.kwargs["pk"]})
+
 
 class MailboxView(FormView):
     form_class = forms.MailboxForm
